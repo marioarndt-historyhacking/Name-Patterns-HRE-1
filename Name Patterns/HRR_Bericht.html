@@ -1,0 +1,872 @@
+<title>Das Konrad-Heinrich-Schema</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+
+<style>
+:root {
+  --ground:      #E9ECEF;
+  --surface:     #FDFDFC;
+  --surface-2:   #F3F5F7;
+  --ink:         #151C2E;
+  --ink-soft:    #55607A;
+  --ink-faint:   #7C879B;
+  --rule:        #C9D0D8;
+  --rule-soft:   #DDE2E7;
+  --gold:        #8A6A1F;
+  --gold-deep:   #6B5116;
+  --gold-tint:   #EFE6CE;
+  --gold-edge:   #CDBA85;
+  --brick:       #7E3B2F;
+  --brick-tint:  #EFDFDA;
+  --measure:     68ch;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ground:     #10141C;
+    --surface:    #181D28;
+    --surface-2:  #1E2532;
+    --ink:        #E7EAF0;
+    --ink-soft:   #A0AABC;
+    --ink-faint:  #7A8497;
+    --rule:       #2E3644;
+    --rule-soft:  #242B37;
+    --gold:       #CBA55E;
+    --gold-deep:  #E0BE71;
+    --gold-tint:  #2A2413;
+    --gold-edge:  #6E5A2C;
+    --brick:      #CE8672;
+    --brick-tint: #3A231D;
+  }
+}
+:root[data-theme="dark"] {
+  --ground:     #10141C;
+  --surface:    #181D28;
+  --surface-2:  #1E2532;
+  --ink:        #E7EAF0;
+  --ink-soft:   #A0AABC;
+  --ink-faint:  #7A8497;
+  --rule:       #2E3644;
+  --rule-soft:  #242B37;
+  --gold:       #CBA55E;
+  --gold-deep:  #E0BE71;
+  --gold-tint:  #2A2413;
+  --gold-edge:  #6E5A2C;
+  --brick:      #CE8672;
+  --brick-tint: #3A231D;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  background: var(--ground);
+  color: var(--ink);
+  font-family: "Spectral", Georgia, "Times New Roman", serif;
+  font-size: 17px;
+  line-height: 1.66;
+  -webkit-font-smoothing: antialiased;
+}
+
+.sheet {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 24px 96px;
+}
+
+/* ---------- Kopf ---------- */
+
+.masthead {
+  padding: 72px 0 40px;
+  border-bottom: 2px solid var(--ink);
+  margin-bottom: 8px;
+}
+.eyebrow {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 0 0 20px;
+}
+h1 {
+  font-size: clamp(34px, 6vw, 52px);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+  margin: 0 0 18px;
+  text-wrap: balance;
+}
+.standfirst {
+  font-size: 20px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  font-weight: 300;
+  max-width: 60ch;
+  margin: 0;
+}
+.byline {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 12px;
+  color: var(--ink-faint);
+  margin: 28px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 22px;
+}
+
+/* ---------- Inhalt ---------- */
+
+.toc {
+  margin: 0 0 56px;
+  padding: 22px 0 4px;
+  border-bottom: 1px solid var(--rule);
+}
+.toc ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 2px 32px;
+  counter-reset: toc;
+}
+.toc li { counter-increment: toc; }
+.toc a {
+  display: flex;
+  gap: 12px;
+  padding: 7px 0;
+  color: var(--ink-soft);
+  text-decoration: none;
+  font-size: 15px;
+  border-bottom: 1px solid transparent;
+}
+.toc a:hover { color: var(--gold-deep); }
+.toc a::before {
+  content: counter(toc, decimal-leading-zero);
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 11px;
+  color: var(--gold);
+  padding-top: 4px;
+}
+
+section { margin: 0 0 68px; scroll-margin-top: 24px; }
+
+h2 {
+  font-size: 27px;
+  font-weight: 600;
+  line-height: 1.22;
+  letter-spacing: -0.01em;
+  margin: 0 0 6px;
+  text-wrap: balance;
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+}
+h2 .num {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--gold);
+  letter-spacing: 0.06em;
+}
+h3 {
+  font-size: 19px;
+  font-weight: 600;
+  margin: 40px 0 4px;
+  letter-spacing: -0.005em;
+}
+h2 + p, h3 + p { margin-top: 12px; }
+
+p { margin: 0 0 18px; max-width: var(--measure); }
+p.lead { font-size: 18.5px; color: var(--ink-soft); }
+
+a { color: var(--gold-deep); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+strong { font-weight: 600; }
+em { font-style: italic; }
+
+ul.prose, ol.prose { max-width: var(--measure); margin: 0 0 20px; padding-left: 22px; }
+ul.prose li, ol.prose li { margin-bottom: 9px; }
+
+code, .mono {
+  font-family: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  font-variant-numeric: tabular-nums;
+}
+code {
+  font-size: 0.86em;
+  background: var(--surface-2);
+  border: 1px solid var(--rule-soft);
+  border-radius: 3px;
+  padding: 1px 5px;
+}
+
+/* ---------- Figuren ---------- */
+
+figure {
+  margin: 32px 0 36px;
+  padding: 0;
+}
+figcaption {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  margin-top: 12px;
+  max-width: var(--measure);
+}
+figcaption b {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 500;
+  margin-right: 8px;
+}
+
+/* Register */
+
+.register {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  overflow: hidden;
+}
+.reg-row {
+  display: grid;
+  grid-template-columns: 46px 1fr 120px;
+  align-items: center;
+  gap: 0 14px;
+  padding: 0 16px;
+  min-height: 30px;
+  border-bottom: 1px solid var(--rule-soft);
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 13.5px;
+}
+.reg-row:last-child { border-bottom: 0; }
+.reg-idx { color: var(--ink-faint); font-size: 11.5px; text-align: right; }
+.reg-name { color: var(--ink); }
+.reg-note {
+  font-size: 10.5px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  text-align: right;
+}
+
+.reg-row.inblock { background: var(--gold-tint); }
+.reg-row.edge .reg-name { font-weight: 600; color: var(--gold-deep); }
+.reg-row.blockstart { border-top: 2px solid var(--gold); }
+.reg-row.blockend { border-bottom: 2px solid var(--gold); }
+.reg-row.outside { background: var(--brick-tint); }
+.reg-row.outside .reg-name { color: var(--brick); font-style: italic; }
+.reg-row.outside .reg-note { color: var(--brick); }
+
+.reg-band {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 7px 16px;
+  background: var(--surface-2);
+  border-bottom: 1px solid var(--rule-soft);
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+  font-weight: 500;
+}
+.reg-band span:last-child { color: var(--ink-faint); letter-spacing: 0.04em; }
+
+/* Rhythmusleiste */
+
+.rhythm {
+  --king: 26px;   /* Breite je König -- die Balkenlänge zeigt das Wachstum */
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  padding: 20px;
+}
+.rhythm-row { display: flex; align-items: center; gap: 12px; }
+.rhythm-label {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 11.5px;
+  color: var(--ink-faint);
+  width: 34px;
+  flex: none;
+}
+.rhythm-bar {
+  height: 20px;
+  flex: none;
+  background: var(--gold-tint);
+  border: 1px solid var(--gold-edge);
+  display: flex;
+  align-items: center;
+  padding: 0 9px;
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 11px;
+  color: var(--gold-deep);
+  white-space: nowrap;
+}
+.rhythm-gap {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 11px;
+  color: var(--ink-faint);
+}
+
+/* Streifen für Mischungen */
+
+.strip-wrap { overflow-x: auto; background: var(--surface); border: 1px solid var(--rule); }
+.strip {
+  display: flex;
+  gap: 0;
+  padding: 0;
+  min-width: max-content;
+}
+.strip-label {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  padding: 10px 16px 4px;
+}
+.strip-row { display: flex; min-width: max-content; padding: 0 16px 10px; }
+.cell {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 11px;
+  padding: 3px 5px;
+  border-right: 1px solid var(--rule-soft);
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+.cell.on { background: var(--gold-tint); color: var(--gold-deep); }
+.cell.mark { background: var(--gold); color: var(--surface); font-weight: 600; }
+.cell.out { color: var(--brick); }
+
+/* Tabellen */
+
+.tablewrap { overflow-x: auto; border: 1px solid var(--rule); background: var(--surface); }
+table { border-collapse: collapse; width: 100%; min-width: 480px; }
+th, td {
+  text-align: left;
+  padding: 9px 16px;
+  border-bottom: 1px solid var(--rule-soft);
+  font-size: 14px;
+}
+th {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  font-weight: 500;
+  border-bottom: 1px solid var(--rule);
+  white-space: nowrap;
+}
+td.num, th.num { text-align: right; font-family: "IBM Plex Mono", ui-monospace, monospace; font-variant-numeric: tabular-nums; }
+tbody tr:last-child td { border-bottom: 0; }
+td.strongnum { font-weight: 600; color: var(--gold-deep); }
+
+/* Merksatz */
+
+.pull {
+  border-left: 3px solid var(--gold);
+  padding: 4px 0 4px 22px;
+  margin: 30px 0;
+  max-width: var(--measure);
+}
+.pull p { font-size: 19px; line-height: 1.5; color: var(--ink); margin: 0; font-weight: 300; }
+
+.caveat {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--brick);
+  padding: 20px 24px;
+  margin: 28px 0;
+}
+.caveat h4 {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--brick);
+  margin: 0 0 10px;
+  font-weight: 500;
+}
+.caveat p:last-child { margin-bottom: 0; }
+
+/* Kennzahlen */
+
+.figures {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  margin: 30px 0;
+}
+.fig-cell { background: var(--surface); padding: 18px 20px; }
+.fig-val {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 26px;
+  font-weight: 500;
+  color: var(--gold-deep);
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+.fig-key {
+  font-size: 12.5px;
+  color: var(--ink-soft);
+  margin-top: 3px;
+  line-height: 1.4;
+}
+
+pre {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  padding: 16px 18px;
+  overflow-x: auto;
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 12.5px;
+  line-height: 1.65;
+  margin: 20px 0;
+  color: var(--ink);
+}
+pre code { background: none; border: 0; padding: 0; font-size: inherit; }
+
+hr.rule { border: 0; border-top: 1px solid var(--rule); margin: 56px 0; }
+
+footer {
+  border-top: 2px solid var(--ink);
+  padding-top: 24px;
+  font-size: 13.5px;
+  color: var(--ink-faint);
+  max-width: var(--measure);
+}
+
+@media (max-width: 620px) {
+  body { font-size: 16px; }
+  .sheet { padding: 0 18px 64px; }
+  .masthead { padding-top: 48px; }
+  .reg-row { grid-template-columns: 34px 1fr; }
+  .reg-note { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
+
+/* ---------- Druck / PDF ---------- */
+
+@page {
+  size: A4;
+  margin: 15mm 14mm 16mm;
+}
+
+@media print {
+  /* Im Druck immer die helle Palette -- ein PDF erbt kein Systemthema. */
+  :root, :root:not([data-theme="light"]), :root[data-theme="dark"] {
+    --ground:     #FFFFFF;
+    --surface:    #FFFFFF;
+    --surface-2:  #F3F5F7;
+    --ink:        #151C2E;
+    --ink-soft:   #46516A;
+    --ink-faint:  #6D788C;
+    --rule:       #B9C2CC;
+    --rule-soft:  #DDE2E7;
+    --gold:       #7C5F1B;
+    --gold-deep:  #5E4713;
+    --gold-tint:  #F1E8D2;
+    --gold-edge:  #C9B27A;
+    --brick:      #7E3B2F;
+    --brick-tint: #F2E3DE;
+  }
+  /* Ohne dies druckt der Browser die Blockbaender weiss -- und genau die
+     Flaechenfarbe traegt hier die Information. */
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+  body { background: #fff; font-size: 10.2pt; line-height: 1.5; }
+  .sheet { max-width: none; padding: 0; }
+  :root { --measure: none; }
+  p { max-width: none; }
+
+  .masthead { padding-top: 0; break-after: avoid; }
+  h1 { font-size: 27pt; }
+  .standfirst { font-size: 12pt; max-width: none; }
+
+  .toc { break-after: page; }
+  section { break-before: auto; margin-bottom: 26px; }
+  h2, h3 { break-after: avoid; }
+  h2 { font-size: 16pt; margin-top: 4px; }
+  h3 { font-size: 12pt; margin-top: 20px; }
+  .pull p { font-size: 11.5pt; }
+  p.lead { font-size: 11pt; }
+
+  figure, .caveat, .figures, .tablewrap, pre, .rhythm { break-inside: avoid; }
+  figcaption { max-width: none; font-size: 9pt; }
+
+  /* Ein Bandkopf darf nicht allein am Seitenfuss stehen bleiben. */
+  .reg-band { break-after: avoid; }
+  .reg-row { break-inside: avoid; min-height: 0; padding-top: 1px; padding-bottom: 1px; font-size: 9.5pt; }
+  .register { break-inside: auto; }
+
+  /* Der Mischungsstreifen ist 31 Zellen breit und muss auf die Seite passen. */
+  .strip-wrap { overflow: visible; }
+  .strip-row { min-width: 0; padding: 0 10px 8px; }
+  .cell { font-size: 6.6pt; padding: 2px 2px; }
+  .rhythm { --king: 17px; padding: 12px; }
+  .rhythm-bar { height: 15px; font-size: 7.5pt; }
+  .rhythm-gap { font-size: 7.5pt; }
+  .strip-label { font-size: 7.5pt; padding: 7px 10px 3px; }
+
+  table { min-width: 0; }
+  th, td { padding: 5px 9px; font-size: 9pt; }
+  th { font-size: 7.5pt; }
+  .fig-val { font-size: 17pt; }
+  .fig-key { font-size: 9pt; }
+  pre { font-size: 8pt; }
+
+  a { color: var(--ink); text-decoration: none; }
+  .toc a::before { color: var(--gold); }
+  footer { break-inside: avoid; }
+  hr.rule { margin: 30px 0; }
+}
+</style>
+
+<div class="sheet">
+
+<header class="masthead">
+  <p class="eyebrow">Quantitative Untersuchung einer Herrscherliste</p>
+  <h1>Das Konrad-Heinrich-Schema</h1>
+  <p class="standfirst">Die Liste der römisch-deutschen Könige von Konrad I. bis Heinrich VII. zerfällt in vier Abschnitte, die alle nach demselben Muster gebaut sind — und deren Länge um jeweils einen König wächst. Ein Bericht über Befund, Methode und Belastbarkeit.</p>
+  <p class="byline">
+    <span>31 Könige · 911–1313</span>
+    <span>Permutationstest, 8 000 Durchläufe</span>
+    <span>p = 0,0001</span>
+  </p>
+</header>
+
+<nav class="toc" aria-label="Inhalt">
+  <ol>
+    <li><a href="#frage">Die Fragestellung</a></li>
+    <li><a href="#befund">Der Befund</a></li>
+    <li><a href="#nichttrivial">Warum das nicht offensichtlich ist</a></li>
+    <li><a href="#methode">Die Methode</a></li>
+    <li><a href="#ergebnisse">Ergebnisse</a></li>
+    <li><a href="#grenzen">Was der Befund nicht sagt</a></li>
+    <li><a href="#repro">Reproduzierbarkeit</a></li>
+  </ol>
+</nav>
+
+<!-- ================================================== -->
+<section id="frage">
+  <h2><span class="num">01</span>Die Fragestellung</h2>
+
+  <p class="lead">Herrscherlisten sind Aufzählungen. Man erwartet in ihnen keine Ordnung, die über die Chronologie hinausgeht — die Namen folgen aufeinander, wie die Herrschaften aufeinander folgten.</p>
+
+  <p>Bei der Liste der römisch-deutschen Könige fällt jedoch etwas auf. Sie lässt sich in vier Abschnitte zerlegen, die alle nach ein und demselben Schema gebaut sind: Jeder beginnt mit <em>Konrad</em>, gefolgt von <em>Heinrich</em>, und jeder endet wieder mit <em>Heinrich</em>. Dazwischen stehen beliebige andere Namen — und deren Anzahl wächst von Abschnitt zu Abschnitt um genau einen.</p>
+
+  <p>Die Frage, die dieser Bericht beantwortet, lautet nicht: <em>Gibt es dieses Muster?</em> Man kann es abzählen. Sie lautet:</p>
+
+  <div class="pull">
+    <p>Ist eine solche Anordnung bemerkenswert — oder ergibt sie sich von selbst, sobald ein Name wie Heinrich nur häufig genug vorkommt?</p>
+  </div>
+
+  <p>Diese Frage ist nicht rhetorisch. In der Liste steht der Name Heinrich zehnmal, Konrad fünfmal. Bei dieser Häufung entstehen Wiederholungen unweigerlich. Ob die konkrete Anordnung darüber hinaus etwas aussagt, lässt sich nur durch einen Vergleich entscheiden — und genau den leistet das hier beschriebene Verfahren.</p>
+</section>
+
+<!-- ================================================== -->
+<section id="befund">
+  <h2><span class="num">02</span>Der Befund</h2>
+
+  <p>Die untersuchte Liste umfasst 31 Namen. Für die Auswertung zählt allein der Rufname: <span class="mono">Otto&nbsp;II.</span> und <span class="mono">Otto&nbsp;III.</span> sind beide <span class="mono">Otto</span>. Die Ordnungszahlen in der folgenden Darstellung dienen nur der Orientierung und gingen in die Rechnung nicht ein.</p>
+
+  <figure>
+    <div class="register">
+
+      <div class="reg-band"><span>Abschnitt 1 · 911–1024</span><span>6 Könige · 3 dazwischen</span></div>
+      <div class="reg-row inblock edge blockstart"><span class="reg-idx">0</span><span class="reg-name">Konrad I.</span><span class="reg-note">Beginn</span></div>
+      <div class="reg-row inblock edge"><span class="reg-idx">1</span><span class="reg-name">Heinrich I.</span><span class="reg-note">Klammer auf</span></div>
+      <div class="reg-row inblock"><span class="reg-idx">2</span><span class="reg-name">Otto I.</span><span class="reg-note"></span></div>
+      <div class="reg-row inblock"><span class="reg-idx">3</span><span class="reg-name">Otto II.</span><span class="reg-note"></span></div>
+      <div class="reg-row inblock"><span class="reg-idx">4</span><span class="reg-name">Otto III.</span><span class="reg-note"></span></div>
+      <div class="reg-row inblock edge blockend"><span class="reg-idx">5</span><span class="reg-name">Heinrich II.</span><span class="reg-note">Klammer zu</span></div>
+
+      <div class="reg-band"><span>Abschnitt 2 · 1024–1125</span><span>7 Könige · 4 dazwischen</span></div>
+      <div class="reg-row inblock edge blockstart"><span class="reg-idx">6</span><span class="reg-name">Konrad II.</span><span class="reg-note">Beginn</span></div>
+      <div class="reg-row inblock edge"><span class="reg-idx">7</span><span class="reg-name">Heinrich III.</span><span class="reg-note">Klammer auf</span></div>
+      <div class="reg-row inblock"><span class="reg-idx">8</span><span class="reg-name">Heinrich IV.</span><span class="reg-note"></span></div>
+      <div class="reg-row inblock"><span class="reg-idx">9</span><span class="reg-name">Rudolf</span><span class="reg-note"></span></div>
+      <div class="reg-row inblock"><span class="reg-idx">10</span><span class="reg-name">Hermann</span><span class="reg-note"></span></div>
+      <div class="reg-row inblock"><span class="reg-idx">11</span><span class="reg-name">Konrad</span><span class="reg-note"></span></div>
+      <div class="reg-row inblock edge blockend"><span class="reg-idx">12</span><span class="reg-name">Heinrich V.</span><span class="reg-note">Klammer zu</span></div>
+
+      <div class="reg-row outside"><span class="reg-idx">13</span><span class="reg-name">Lothar III.</span><span class="reg-note">ausserhalb</span></div>
+
+      <div class="reg-band"><span>Abschnitt 3 · 1138–1254</span><span>8 Könige · 5 dazwischen</span></div>
+      <div class="reg-row inblock edge blockstart"><span class="reg-idx">14</span><span class="reg-name">Konrad III.</span><span class="reg-note">Beginn</span></div>
+      <div class="reg-row inblock edge"><span class="reg-idx">15</span><span class="reg-name">Heinrich (Berengar)</span><span class="reg-note">Klammer auf</span></div>
+      <div class="reg-row inblock"><span class="reg-idx">16</span><span class="reg-name">Friedrich I.</span><span class="reg-note"></span></div>
+      <div class="reg-row inblock"><span class="reg-idx">17</span><span class="reg-name">Heinrich VI.</span><span class="reg-note"></span></div>
+      <div class="reg-row inblock"><span class="reg-idx">18</span><span class="reg-name">Philipp</span><span class="reg-note"></span></div>
+      <div class="reg-row inblock"><span class="reg-idx">19</span><span class="reg-name">Otto IV.</span><span class="reg-note"></span></div>
+      <div class="reg-row inblock"><span class="reg-idx">20</span><span class="reg-name">Friedrich II.</span><span class="reg-note"></span></div>
+      <div class="reg-row inblock edge blockend"><span class="reg-idx">21</span><span class="reg-name">Heinrich (VII.)</span><span class="reg-note">Klammer zu</span></div>
+
+      <div class="reg-band"><span>Abschnitt 4 · 1237–1313</span><span>9 Könige · 6 dazwischen</span></div>
+      <div class="reg-row inblock edge blockstart"><span class="reg-idx">22</span><span class="reg-name">Konrad IV.</span><span class="reg-note">Beginn</span></div>
+      <div class="reg-row inblock edge"><span class="reg-idx">23</span><span class="reg-name">Heinrich Raspe</span><span class="reg-note">Klammer auf</span></div>
+      <div class="reg-row inblock"><span class="reg-idx">24</span><span class="reg-name">Wilhelm</span><span class="reg-note"></span></div>
+      <div class="reg-row inblock"><span class="reg-idx">25</span><span class="reg-name">Richard</span><span class="reg-note"></span></div>
+      <div class="reg-row inblock"><span class="reg-idx">26</span><span class="reg-name">Alfons</span><span class="reg-note"></span></div>
+      <div class="reg-row inblock"><span class="reg-idx">27</span><span class="reg-name">Rudolf I.</span><span class="reg-note"></span></div>
+      <div class="reg-row inblock"><span class="reg-idx">28</span><span class="reg-name">Adolf</span><span class="reg-note"></span></div>
+      <div class="reg-row inblock"><span class="reg-idx">29</span><span class="reg-name">Albrecht I.</span><span class="reg-note"></span></div>
+      <div class="reg-row inblock edge blockend"><span class="reg-idx">30</span><span class="reg-name">Heinrich VII.</span><span class="reg-note">Klammer zu</span></div>
+
+    </div>
+    <figcaption><b>Abb. 1</b> Die Liste als Register. Golden hinterlegt sind die vier Abschnitte, hervorgehoben deren Anfangs- und Schlussnamen. Lothar III. ist der einzige König, der in keinen Abschnitt fällt. Die Ordnungszahlen sind redaktionelle Ergänzung zur Orientierung und sollten fachlich geprüft werden; berechnet wurde ausschliesslich mit den Rufnamen.</figcaption>
+  </figure>
+
+  <h3>Das Schema in einem Satz</h3>
+
+  <p>Jeder Abschnitt hat die Form <span class="mono">Konrad · Heinrich · [x beliebige Namen] · Heinrich</span>. Über die vier Abschnitte hinweg nimmt <span class="mono">x</span> die Werte 3, 4, 5 und 6 an — jeder Abschnitt ist also genau einen König länger als sein Vorgänger.</p>
+
+  <figure>
+    <div class="rhythm">
+      <div class="rhythm-row"><span class="rhythm-label">1.</span><div class="rhythm-bar" style="width:calc(6 * var(--king))">6 Könige</div><span class="rhythm-gap">Konrad · Heinrich · 3 dazwischen · Heinrich</span></div>
+      <div class="rhythm-row"><span class="rhythm-label">2.</span><div class="rhythm-bar" style="width:calc(7 * var(--king))">7 Könige</div><span class="rhythm-gap">Konrad · Heinrich · 4 dazwischen · Heinrich</span></div>
+      <div class="rhythm-row"><span class="rhythm-label">3.</span><div class="rhythm-bar" style="width:calc(8 * var(--king))">8 Könige</div><span class="rhythm-gap">Konrad · Heinrich · 5 dazwischen · Heinrich</span></div>
+      <div class="rhythm-row"><span class="rhythm-label">4.</span><div class="rhythm-bar" style="width:calc(9 * var(--king))">9 Könige</div><span class="rhythm-gap">Konrad · Heinrich · 6 dazwischen · Heinrich</span></div>
+    </div>
+    <figcaption><b>Abb. 2</b> Die Abschnittslängen wachsen um jeweils einen König. Das ist die zweite Regelmässigkeit neben dem Namensschema — und die eigentlich auffällige.</figcaption>
+  </figure>
+
+  <div class="figures">
+    <div class="fig-cell"><div class="fig-val">30/31</div><div class="fig-key">Könige, die in einem Abschnitt liegen</div></div>
+    <div class="fig-cell"><div class="fig-val">1</div><div class="fig-key">König ausserhalb (Lothar III.)</div></div>
+    <div class="fig-cell"><div class="fig-val">4</div><div class="fig-key">Abschnitte in lückenloser Folge</div></div>
+    <div class="fig-cell"><div class="fig-val">0</div><div class="fig-key">Abweichungen vom Schema</div></div>
+  </div>
+
+  <p>Die vier Abschnitte decken <strong>30 von 31 Königen</strong> ab. Sie schliessen zudem fast unmittelbar aneinander an: zwischen Abschnitt 1 und 2 steht kein einziger König, zwischen 3 und 4 ebenfalls keiner, und zwischen 2 und 3 genau einer — Lothar III.</p>
+</section>
+
+<!-- ================================================== -->
+<section id="nichttrivial">
+  <h2><span class="num">03</span>Warum das nicht offensichtlich ist</h2>
+
+  <p>Zwei naheliegende Prüfverfahren finden das Muster <em>nicht</em>. Das ist kein Nebenaspekt: es erklärt, warum die Regelmässigkeit bislang nicht systematisch beschrieben wurde, und warum die Auswertung einen gewissen Aufwand erfordert.</p>
+
+  <h3>Erster Irrweg: die Abstände zwischen den Heinrichen zählen</h3>
+
+  <p>Man könnte meinen, es genüge, alle Vorkommen von Heinrich aufzulisten und die Lücken dazwischen zu betrachten. Das Ergebnis:</p>
+
+  <pre><code>Heinrich steht an Position   1 · 5 · 7 · 8 · 12 · 15 · 17 · 21 · 23 · 30
+Namen jeweils dazwischen       3   1   0   3    2    1    3    1    6</code></pre>
+
+  <p>Die gesuchte Folge <strong>3 · 4 · 5 · 6</strong> kommt darin nicht vor. Der Grund: nicht jeder Heinrich ist eine Abschnittsgrenze. Heinrich IV. (Position 8) und Heinrich VI. (Position 17) stehen mitten in einem Abschnitt. Das Muster ist eine <em>Auswahl</em> aus den Heinrichen, keine lückenlose Kette — und eine solche Auswahl findet man durch blosses Nachbarschaftszählen nicht.</p>
+
+  <h3>Zweiter Irrweg: von links nach rechts durchgehen</h3>
+
+  <p>Ebenso wenig genügt es, die Liste zu durchlaufen und bei jedem Konrad einen neuen Abschnitt zu beginnen. In der Liste stehen fünf Konrade, aber nur vier davon eröffnen einen Abschnitt. Der Konrad an Position 11 — ein Sohn Heinrichs IV. — steht <em>innerhalb</em> von Abschnitt 2.</p>
+
+  <p>Zählt man alle Stellen, an denen ein Abschnitt der geforderten Form überhaupt beginnen und enden <em>könnte</em>, kommt man auf <strong>16 Kandidaten</strong>. Nur vier davon gehören zur richtigen Kette. Ein gieriges Verfahren, das immer den nächstbesten Kandidaten nimmt, greift zwangsläufig daneben.</p>
+
+  <div class="pull">
+    <p>Das Muster ist eine Teilfolge, keine Nachbarschaft. Es zu finden verlangt eine Suche über alle Kombinationen — nicht einen Durchlauf.</p>
+  </div>
+
+  <p>Die hier verwendete Software löst das durch dynamische Programmierung: Sind Startlänge und Wachstumsschritt einmal festgelegt, steht die Soll-Länge jedes Abschnitts fest, und es lässt sich systematisch die längste Kette bestimmen, die diese Vorgabe einhält. Für den historischen Befund ist nur wichtig, dass das Verfahren <em>vollständig</em> ist: es übersieht keine gültige Kette und bevorzugt keine.</p>
+</section>
+
+<!-- ================================================== -->
+<section id="methode">
+  <h2><span class="num">04</span>Die Methode</h2>
+
+  <p class="lead">Der Kern der Auswertung ist ein Vergleich. Nicht mit einer theoretischen Formel, sondern mit dem Zufall selbst — in Gestalt zehntausendfach neu gemischter Königslisten.</p>
+
+  <h3>Das Nullmodell: dieselben Namen, andere Reihenfolge</h3>
+
+  <p>Man stelle sich vor, die 31 Namen stünden auf 31 Zetteln. Diese Zettel werden gemischt und in neuer Reihenfolge ausgelegt. Dann sucht man mit <em>genau demselben</em> Verfahren nach dem besten Muster, das sich in dieser gemischten Liste finden lässt. Und das wiederholt man tausendfach.</p>
+
+  <p>Entscheidend ist, was beim Mischen <strong>erhalten bleibt</strong>: Jede gemischte Liste enthält weiterhin exakt zehnmal Heinrich, fünfmal Konrad, viermal Otto und so fort. Die Häufigkeiten sind unverändert.</p>
+
+  <div class="pull">
+    <p>Geprüft wird damit nicht, ob Heinrich ein häufiger Name war — das ist er in jeder Mischung. Geprüft wird ausschliesslich, ob seine <em>Stellung</em> in der überlieferten Reihenfolge bemerkenswert ist.</p>
+  </div>
+
+  <p>So sehen die ersten drei Mischungen aus (Namen auf drei Buchstaben gekürzt — sie bleiben dabei eindeutig unterscheidbar):</p>
+
+  <figure>
+    <div class="strip-wrap">
+      <div class="strip-label">Überlieferung — vier Abschnitte, 30 von 31 Königen erfasst</div>
+      <div class="strip-row">
+        <span class="cell mark">Kon</span><span class="cell mark">Hei</span><span class="cell on">Ott</span><span class="cell on">Ott</span><span class="cell on">Ott</span><span class="cell mark">Hei</span><span class="cell mark">Kon</span><span class="cell mark">Hei</span><span class="cell on">Hei</span><span class="cell on">Rud</span><span class="cell on">Her</span><span class="cell on">Kon</span><span class="cell mark">Hei</span><span class="cell out">Lot</span><span class="cell mark">Kon</span><span class="cell mark">Hei</span><span class="cell on">Fri</span><span class="cell on">Hei</span><span class="cell on">Phi</span><span class="cell on">Ott</span><span class="cell on">Fri</span><span class="cell mark">Hei</span><span class="cell mark">Kon</span><span class="cell mark">Hei</span><span class="cell on">Wil</span><span class="cell on">Ric</span><span class="cell on">Alf</span><span class="cell on">Rud</span><span class="cell on">Ado</span><span class="cell on">Alb</span><span class="cell mark">Hei</span>
+      </div>
+      <div class="strip-label">Mischung 1 — kein Muster gefunden</div>
+      <div class="strip-row">
+        <span class="cell">Ott</span><span class="cell">Kon</span><span class="cell">Her</span><span class="cell">Wil</span><span class="cell">Rud</span><span class="cell">Kon</span><span class="cell">Hei</span><span class="cell">Hei</span><span class="cell">Kon</span><span class="cell">Hei</span><span class="cell">Rud</span><span class="cell">Alf</span><span class="cell">Hei</span><span class="cell">Kon</span><span class="cell">Fri</span><span class="cell">Ado</span><span class="cell">Hei</span><span class="cell">Lot</span><span class="cell">Phi</span><span class="cell">Ott</span><span class="cell">Hei</span><span class="cell">Hei</span><span class="cell">Alb</span><span class="cell">Ott</span><span class="cell">Ric</span><span class="cell">Hei</span><span class="cell">Hei</span><span class="cell">Hei</span><span class="cell">Kon</span><span class="cell">Ott</span><span class="cell">Fri</span>
+      </div>
+      <div class="strip-label">Mischung 2 — bestes Muster erfasst 6 von 31 Königen</div>
+      <div class="strip-row">
+        <span class="cell">Fri</span><span class="cell">Ott</span><span class="cell">Ado</span><span class="cell">Alf</span><span class="cell mark">Hei</span><span class="cell mark">Hei</span><span class="cell">Lot</span><span class="cell mark">Hei</span><span class="cell mark">Hei</span><span class="cell">Ott</span><span class="cell mark">Hei</span><span class="cell mark">Hei</span><span class="cell">Kon</span><span class="cell">Kon</span><span class="cell">Fri</span><span class="cell">Her</span><span class="cell">Wil</span><span class="cell">Hei</span><span class="cell">Hei</span><span class="cell">Rud</span><span class="cell">Ott</span><span class="cell">Rud</span><span class="cell">Kon</span><span class="cell">Alb</span><span class="cell">Kon</span><span class="cell">Ric</span><span class="cell">Ott</span><span class="cell">Hei</span><span class="cell">Hei</span><span class="cell">Kon</span><span class="cell">Phi</span>
+      </div>
+      <div class="strip-label">Mischung 3 — kein Muster gefunden</div>
+      <div class="strip-row">
+        <span class="cell">Kon</span><span class="cell">Fri</span><span class="cell">Kon</span><span class="cell">Rud</span><span class="cell">Fri</span><span class="cell">Her</span><span class="cell">Hei</span><span class="cell">Wil</span><span class="cell">Hei</span><span class="cell">Phi</span><span class="cell">Ric</span><span class="cell">Hei</span><span class="cell">Hei</span><span class="cell">Hei</span><span class="cell">Hei</span><span class="cell">Kon</span><span class="cell">Alf</span><span class="cell">Kon</span><span class="cell">Alb</span><span class="cell">Ott</span><span class="cell">Hei</span><span class="cell">Ott</span><span class="cell">Ado</span><span class="cell">Kon</span><span class="cell">Lot</span><span class="cell">Hei</span><span class="cell">Hei</span><span class="cell">Hei</span><span class="cell">Rud</span><span class="cell">Ott</span><span class="cell">Ott</span>
+      </div>
+    </div>
+    <figcaption><b>Abb. 3</b> Die Überlieferung im Vergleich mit den ersten drei Zufallsmischungen. Alle vier Zeilen enthalten dieselben 31 Namen. In der Überlieferung fügen sie sich zu vier Abschnitten; in zwei der drei Mischungen findet das Verfahren überhaupt kein zulässiges Muster.</figcaption>
+  </figure>
+
+  <h3>Der p-Wert, ohne Formeln</h3>
+
+  <p>Der p-Wert ist schlicht ein Anteil: <strong>der Anteil der Mischungen, in denen der Zufall ein mindestens ebenso gutes Muster hervorbrachte wie die Überlieferung.</strong></p>
+
+  <p>Fände man in 500 von 1 000 Mischungen etwas Gleichwertiges, wäre p = 0,5 — der Befund wäre nichts Besonderes. Findet man es in 10 von 1 000, ist p = 0,01, und die überlieferte Anordnung hebt sich deutlich ab. Üblich ist die Schwelle p &lt; 0,05: der Zufall schafft es in weniger als einem von zwanzig Fällen.</p>
+
+  <p>Zwei technische Anmerkungen, die für die Beurteilung der Zahlen wichtig sind:</p>
+
+  <ul class="prose">
+    <li>Der p-Wert wird als <span class="mono">(1 + Treffer) / (1 + Mischungen)</span> berechnet. Die zusätzliche Eins verhindert, dass bei null Treffern ein p-Wert von exakt null behauptet wird — bei endlich vielen Mischungen wäre das eine Übertreibung. Bei 8 000 Mischungen ohne Treffer lautet das Ergebnis also p = 0,00012, nicht p = 0.</li>
+    <li>Mehr Mischungen machen einen Befund <em>nicht</em> signifikanter. Sie schätzen denselben Wert nur genauer. Wer die Mischungszahl erhöht, verengt die Unsicherheit seiner Schätzung, verschiebt aber nicht das Ergebnis.</li>
+  </ul>
+
+  <h3>Zwei Massstäbe für „Ordnung“</h3>
+
+  <p>Wie gut ein gefundenes Muster ist, lässt sich auf zwei Arten messen — und die Wahl macht einen erheblichen Unterschied.</p>
+
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Massstab</th><th>Was gezählt wird</th><th>Blinder Fleck</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Seltenheit</strong></td><td>Wie unwahrscheinlich das Namensmotiv als solches ist</td><td>Drei Abschnitte sind drei Abschnitte — ob je drei oder je acht Könige lang, macht keinen Unterschied</td></tr>
+        <tr><td><strong>Abdeckung</strong></td><td>Welcher Anteil der Liste von den Abschnitten erfasst wird</td><td>Bevorzugt lange Abschnitte, unabhängig davon, wie selten die beteiligten Namen sind</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Für die vorliegende Frage ist die <strong>Abdeckung</strong> der passendere Massstab. Ein Muster aus drei Abschnitten zu je drei Königen erklärt neun von 31 Positionen und lässt den Rest ungeordnet; das überlieferte Muster erklärt 30 von 31. Nur die Abdeckung sieht diesen Unterschied. Für die HRR-Liste ist die Entscheidung allerdings unkritisch — beide Massstäbe führen hier zum selben Schluss.</p>
+</section>
+
+<!-- ================================================== -->
+<section id="ergebnisse">
+  <h2><span class="num">05</span>Ergebnisse</h2>
+
+  <p>Alle Zahlen beruhen auf 8 000 Mischungen mit festgelegtem Startwert des Zufallsgenerators; die Läufe sind damit exakt wiederholbar.</p>
+
+  <div class="figures">
+    <div class="fig-cell"><div class="fig-val">0,0001</div><div class="fig-key">p-Wert bei vorab festgelegtem Motiv</div></div>
+    <div class="fig-cell"><div class="fig-val">0,0039</div><div class="fig-key">p-Wert bei automatischer Mustersuche</div></div>
+    <div class="fig-cell"><div class="fig-val">0 / 8000</div><div class="fig-key">Mischungen mit ebenso seltenem Motiv</div></div>
+    <div class="fig-cell"><div class="fig-val">96,8 %</div><div class="fig-key">Abdeckung der Überlieferung</div></div>
+  </div>
+
+  <h3>Zwei Fragestellungen, zwei Zahlen</h3>
+
+  <p>Es macht einen Unterschied, ob man das Muster vorab benennt oder es suchen lässt — und beide Zahlen sind berichtenswert.</p>
+
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Vorgehen</th><th>Frage an das Nullmodell</th><th class="num">p (Seltenheit)</th><th class="num">p (Abdeckung)</th></tr></thead>
+      <tbody>
+        <tr><td>Motiv vorab festgelegt</td><td>Wie oft erzeugt der Zufall <em>dieses</em> Schema?</td><td class="num strongnum">0,00012</td><td class="num strongnum">0,00012</td></tr>
+        <tr><td>Automatische Suche</td><td>Wie oft erzeugt er <em>irgendein</em> vergleichbares Schema?</td><td class="num strongnum">0,00012</td><td class="num strongnum">0,00387</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Die zweite Zeile ist die strengere und für eine Publikation die massgebliche: sie berücksichtigt, dass das Verfahren zwölf verschiedene Namensmotive durchprobiert hat und eines davon rein zufällig hätte passen können. Selbst unter dieser Verschärfung liegt der p-Wert bei 0,004 — der Zufall erreicht Vergleichbares in etwa vier von tausend Fällen.</p>
+
+  <h3>Robustheit gegenüber den Einstellungen</h3>
+
+  <p>Ein Befund, der nur bei einer bestimmten Parameterwahl standhält, ist wertlos. Deshalb wurde die Auswertung über acht Konfigurationen wiederholt — mit und ohne Nachbarschaftsschranke, mit einer und mit zwei zugelassenen Wachstumsregeln, mit und ohne Toleranz für Abweichungen, mit einer und mit zwei Musterfamilien. Alle Läufe mit 2 000 Mischungen:</p>
+
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Konfiguration</th><th class="num">Abschnitte</th><th class="num">Abdeckung</th><th class="num">p (Seltenheit)</th><th class="num">p (Abdeckung)</th></tr></thead>
+      <tbody>
+        <tr><td>Nur wachsende Längen, Abschnitte benachbart</td><td class="num">4</td><td class="num">97 %</td><td class="num">0,0005</td><td class="num">0,0030</td></tr>
+        <tr><td>Nur wachsende Längen, Abstand unbegrenzt</td><td class="num">4</td><td class="num">97 %</td><td class="num">0,0005</td><td class="num">0,0030</td></tr>
+        <tr><td>Konstante <em>und</em> wachsende Längen</td><td class="num">4</td><td class="num">97 %</td><td class="num">0,0005</td><td class="num">0,0040</td></tr>
+        <tr><td>dito, Abstand unbegrenzt</td><td class="num">4</td><td class="num">97 %</td><td class="num">0,0015</td><td class="num">0,0035</td></tr>
+        <tr><td>Beide Musterfamilien</td><td class="num">4</td><td class="num">97 %</td><td class="num">0,0005</td><td class="num">0,0165</td></tr>
+        <tr><td>Beide Familien, Abstand unbegrenzt</td><td class="num">4</td><td class="num">97 %</td><td class="num">0,0015</td><td class="num">0,0155</td></tr>
+        <tr><td>Mit Toleranz für eine Abweichung</td><td class="num">4</td><td class="num">97 %</td><td class="num">0,0005</td><td class="num">0,0210</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>In <strong>allen</strong> Konfigurationen wird dasselbe Muster gefunden, und in allen bleibt der p-Wert unter 0,05. Fünf unabhängige Startwerte des Zufallsgenerators ergaben bei der breitesten Suche p-Werte zwischen 0,013 und 0,015 — die Schwankung liegt im Bereich der reinen Schätzunsicherheit.</p>
+
+  <p>Bemerkenswert ist der Anstieg des p-Werts, je weiter die Suche geöffnet wird: von 0,003 auf 0,021. Das ist kein Mangel, sondern korrektes Verhalten. Wer breiter sucht, gibt auch dem Zufall mehr Gelegenheiten; dieser Preis wird korrekt eingerechnet.</p>
+
+  <h3>Einordnung</h3>
+
+  <p>Zum Vergleich: Dieselbe Methode, auf drei skandinavische und schottische Königslisten desselben Zeitraums angewandt, ergab p-Werte zwischen 0,001 und 0,021. Die HRR-Liste liegt mit 96,8 % Abdeckung an der Spitze dieses Feldes — sie ist die am vollständigsten durch ein einziges Schema erfasste der untersuchten Listen. Diese vergleichende Auswertung ist Gegenstand eines gesonderten Berichts.</p>
+</section>
+
+<!-- ================================================== -->
+<section id="grenzen">
+  <h2><span class="num">06</span>Was der Befund nicht sagt</h2>
+
+  <p class="lead">Ein statistischer Test beantwortet genau eine Frage. Die folgenden Einschränkungen sind keine Relativierungen, sondern gehören zum Ergebnis.</p>
+
+  <div class="caveat">
+    <h4>Kein Nachweis von Absicht</h4>
+    <p>Der Test zeigt: Diese Anordnung entsteht nicht durch blosses Umsortieren derselben Namen. Er sagt <em>nicht</em>, woran das liegt. Die naheliegendste Alternative zu einer bewussten Gestaltung sind reale Benennungstraditionen — Söhne, die nach dem Grossvater heissen; Dynastien, die zwischen zwei Leitnamen wechseln. Solche Bräuche erzeugen regelmässige Abstände ganz von selbst. Das Mischen zerstört sie, und der Test verbucht sie deshalb als „Ordnung“. Zwischen <em>geplant</em> und <em>aus Benennungsregeln erwachsen</em> kann er nicht unterscheiden.</p>
+  </div>
+
+  <div class="caveat">
+    <h4>Die Liste ist selbst ein Konstrukt</h4>
+    <p>Wer als König zählt, ist eine historiographische Entscheidung: Gegenkönige, Mitkönige, nie gekrönte Gewählte. Heinrich Berengar, Heinrich Raspe, Rudolf von Rheinfelden, Hermann von Salm — jede dieser Aufnahmen oder Auslassungen verschiebt die Abschnittslängen. Der Befund gilt für <em>diese</em> Liste in <em>dieser</em> Abgrenzung. Wie empfindlich er auf plausible Alternativabgrenzungen reagiert, ist eine offene und lohnende Anschlussfrage — und sie ist mit demselben Werkzeug prüfbar.</p>
+  </div>
+
+  <div class="caveat">
+    <h4>Anfang und Ende sind gesetzt</h4>
+    <p>Die Liste beginnt mit Konrad I. und endet mit Heinrich VII. Beide Grenzen sind sinnvoll begründbar, aber sie sind gesetzt. Eine Verlängerung nach 1313 oder eine andere Anfangswahl kann das Bild verändern. Der Bericht behauptet nicht, dass das Schema sich fortsetzt.</p>
+  </div>
+
+  <div class="caveat">
+    <h4>Das Muster wurde zuerst gesehen, dann formalisiert</h4>
+    <p>Die Untersuchung begann mit einer Beobachtung am Material, nicht mit einer vorab formulierten Hypothese. Das ist der Regelfall in der historischen Forschung, verlangt aber Zurückhaltung bei der Interpretation des p-Werts. Die Spalte „automatische Suche“ in Abschnitt 5 begegnet diesem Einwand teilweise: Dort gibt das Verfahren das Motiv nicht vor, sondern sucht es selbst — und rechnet ein, wie viele Motive dabei geprüft wurden. Vollständig ausräumen lässt sich der Einwand nur durch Anwendung auf Listen, die bei der Entwicklung der Methode keine Rolle spielten.</p>
+  </div>
+
+  <div class="caveat">
+    <h4>Vier Abschnitte sind wenig</h4>
+    <p>Die gesamte Evidenz beruht auf vier Abschnitten. Das ist eine kleine Zahl, und ein einzelner anders abgegrenzter Abschnitt kann das Ergebnis merklich verschieben. Der niedrige p-Wert kommt nicht durch die Menge der Belege zustande, sondern durch die Vollständigkeit, mit der diese vier Abschnitte die Liste ausschöpfen.</p>
+  </div>
+</section>
+
+<!-- ================================================== -->
+<section id="repro">
+  <h2><span class="num">07</span>Reproduzierbarkeit</h2>
+
+  <p>Sämtliche Zahlen dieses Berichts lassen sich mit zwei Befehlen nachvollziehen. Die Auswertungssoftware ist in Python geschrieben, kommt ohne Fremdbibliotheken aus und ist durch eine Testsammlung abgesichert.</p>
+
+  <p><strong>Grundlauf</strong> — Motiv vorgegeben, 8 000 Mischungen:</p>
+  <pre><code>python3 -m name_patterns.cli --data HRR_Kings.txt \
+    --family fixed --anchor Konrad,Heinrich --echo Heinrich \
+    --d 1 --max-interruption 1 \
+    --significance 8000 --seed 42</code></pre>
+
+  <p><strong>Automatische Mustersuche</strong> — ohne Vorgabe des Motivs:</p>
+  <pre><code>python3 -m name_patterns.cli --data HRR_Kings.txt \
+    --discover --d 0,1 --max-interruption 1 \
+    --significance 8000 --seed 42</code></pre>
+
+  <p>Der Startwert <span class="mono">--seed 42</span> macht jeden Lauf exakt wiederholbar. Die Eingabedatei enthält einen Namen je Zeile; die Software kürzt jeden Eintrag automatisch auf den Rufnamen, sodass <span class="mono">Otto III.</span> und <span class="mono">Otto I.</span> als derselbe Name zählen.</p>
+
+  <p>Für Leserinnen und Leser, die die Zufallsmischungen selbst in Augenschein nehmen möchten, erzeugt ein weiteres Werkzeug eine Tabelle der ersten hundert Mischungen mit markierten Fundstellen — dieselben Mischungen, auf denen der p-Wert beruht.</p>
+</section>
+
+<hr class="rule">
+
+<footer>
+  <p>Alle Auswertungen mit 8 000 beziehungsweise 2 000 Permutationen, Startwert 42. Ordnungszahlen und Regierungsdaten in Abb. 1 sind redaktionelle Ergänzungen zur Orientierung und gingen nicht in die Berechnung ein; sie sollten vor einer Publikation fachlich geprüft werden.</p>
+</footer>
+
+</div>

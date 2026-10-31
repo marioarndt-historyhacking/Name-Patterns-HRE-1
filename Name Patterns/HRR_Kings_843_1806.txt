@@ -1,0 +1,73 @@
+# Automatisch erzeugte Herrscherliste fuer Name Patterns
+# Land: hrr
+# Zeitraum der ersten Koenigserhebung: 843-1806
+# Quelle: https://de.wikipedia.org/wiki/Liste_der_r%C3%B6misch-deutschen_Herrscher
+# Wikipedia-Revision: 271353392
+# Abrufzeit (UTC): 2026-10-28T06:04:20+00:00
+# Sortierung: erste Koenigserhebung; bei Gleichstand Wikipedia-Tabellenreihenfolge
+# Jede Person erscheint nur einmal; spaetere Amtszeiten/Rollen werden nicht wiederholt.
+
+Ludwig
+Karlmann
+Ludwig
+Karl
+Arnolf
+Ludwig
+Konrad
+Heinrich
+Otto
+Otto
+Otto
+Heinrich
+Konrad
+Heinrich
+Heinrich
+Rudolf
+Hermann
+Konrad
+Heinrich
+Lothar
+Konrad
+Heinrich
+Friedrich
+Heinrich
+Philipp
+Otto
+Friedrich
+Heinrich
+Konrad
+Heinrich
+Wilhelm
+Richard
+Alfons
+Rudolf
+Adolf
+Albrecht
+Heinrich
+Ludwig
+Friedrich
+Karl
+Günther
+Wenzel
+Ruprecht
+Jobst
+Sigismund
+Albrecht
+Friedrich
+Maximilian
+Karl
+Ferdinand
+Maximilian
+Rudolf
+Matthias
+Ferdinand
+Ferdinand
+Ferdinand
+Leopold
+Joseph
+Karl
+Karl
+Franz
+Joseph
+Leopold
+Franz

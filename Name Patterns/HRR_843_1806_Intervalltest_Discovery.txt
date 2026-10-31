@@ -1,0 +1,21 @@
+Global beste Intervallkette
+
+Muster:       Konrad Heinrich ... Heinrich
+Regel:        x = 3 + j*1
+Intervall:    Index 6..36 (911–1308)
+Spannweite:   31 Listenpositionen
+Abgedeckt:    30/31 im Intervall (97%); 30/64 der Gesamtliste
+Bloecke:      4; Abweichungen: 0
+Scan-Score:   29.0323
+Globaler p-Wert: 0.0749
+Signifikant:   nein (p >= 0.05)
+
+Bloecke:
+  j=0: Index 6..11, x=3
+  j=1: Index 12..18, x=4
+  j=2: Index 20..27, x=5
+  j=3: Index 28..36, x=6
+
+Nullmodell:   10000 Permutationen; volle Motiv- und Intervallsuche
+Zufallsscore: Mittel 13.9757, 95%-Quantil 31.0408, Maximum 45.1765
+Der p-Wert wiederholt in jeder Permutation die Wahl von Anfang, Ende, x0 und Schrittweite.

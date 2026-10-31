@@ -1,0 +1,46 @@
+Vergleich historisch festgelegter Zeitraeume
+
+Suchraum: FIXED und BOOKEND; freie Motiv- und Intervallsuche
+Jahresgrenzen beziehen sich auf das Jahr der ersten Erhebung.
+
+========================================================================
+Zeitraum 911–1313 (31 Personen)
+========================================================================
+Global beste Intervallkette
+
+Muster:       Konrad Heinrich ... Heinrich
+Regel:        x = 3 + j*1
+Intervall:    Index 0..30 (911–1308)
+Spannweite:   31 Listenpositionen
+Abgedeckt:    30/31 im Intervall (97%); 30/31 der Gesamtliste
+Bloecke:      4; Abweichungen: 0
+Scan-Score:   29.0323
+Globaler p-Wert: 0.0160
+Signifikant:   ja (p < 0.05)
+
+Bloecke:
+  j=0: Index 0..5, x=3
+  j=1: Index 6..12, x=4
+  j=2: Index 14..21, x=5
+  j=3: Index 22..30, x=6
+
+Nullmodell:   10000 Permutationen; volle Motiv- und Intervallsuche
+Zufallsscore: Mittel 18.2494, 95%-Quantil 26.0357, Maximum 30.0000
+Der p-Wert wiederholt in jeder Permutation die Wahl von Anfang, Ende, x0 und Schrittweite.
+Standardisierte Musterstaerke: 0.936524
+
+========================================================================
+Zeitraum 1314–1806 (27 Personen)
+========================================================================
+Kein Musterabschnitt gefunden, der die Vorgaben erfuellt.
+Standardisierte Musterstaerke: 0.000000
+
+========================================================================
+Direkter Frueh-Spaet-Vergleich
+========================================================================
+Differenz der standardisierten Staerken: 0.936524
+Gerichteter Vergleichs-p-Wert (frueh > spaet): 0.0009
+Signifikant:   ja (p < 0.05)
+Nullmodell:   10000 gepoolte Neuverteilungen auf Perioden gleicher Groesse; in beiden Teilen volle Suche
+
+Hinweis: Der Vergleich prueft die zeitliche Konzentration der derzeit implementierten Musterfamilien. Noch unbekannte Musterformen sind nicht Bestandteil des Suchraums.

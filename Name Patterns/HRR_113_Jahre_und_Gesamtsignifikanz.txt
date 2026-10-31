@@ -1,0 +1,20 @@
+113-Jahres-Ereignisfolge und gemeinsamer Signifikanztest
+
+Ereignisse:   911, 1024, 1137, 1250
+Name:         Konrad
+Abstand:      113 Jahre (dreimal exakt)
+Suchbasis:    52 regulaere Vorgaenger-Nachfolger-Ereignisse, 843–1806
+Viererfolgen:  genau 1 in den beobachteten Todesjahren
+
+Gezielter exakter p-Wert (Konrad und Jahre fest): 0.00000369
+Globaler exakter p-Wert (Name frei):             0.00015514
+Global guenstige Namensbelegungen:                42
+
+Namensketten-p-Wert 911–1313:                     0.0160
+Gemeinsamer Permutations-p-Wert:                  0.000097
+Gemeinsame Zufallstreffer:                         96/1000000
+Monte-Carlo-Unsicherheit (Wilson 95 %):             0.000079–0.000117
+Signifikant:                                      ja (p < 0.05)
+
+Der gemeinsame Wert wurde nicht durch Multiplikation der Einzel-p-Werte erzeugt.
+In jeder Permutation mussten beide Befunde gleichzeitig mindestens so stark sein.

@@ -1,0 +1,58 @@
+PAIR_ECHO-Analyse: 7er-Folge bis Friedrich III.
+
+Regel:        X, Y, [n Namen], Y; n waechst je Block exakt um 1
+Discovery:    X/Y, Startposition und Start-n frei; Karlmann -> Karl
+Toleranz:     hoechstens 1 Position insgesamt ausserhalb der Bloecke
+Listenlaenge: 50
+Bloecke:      7
+Abgedeckt:    49/50 im Musterintervall (98.00%)
+Scan-Score:   48.020000
+
+Bloecke:
+  n=1: Index 0..3; X=Karl, Y=Ludwig
+  n=2: Index 4..8; X=Karl, Y=Ludwig
+  n=3: Index 9..14; X=Konrad, Y=Heinrich
+  n=4: Index 15..21; X=Konrad, Y=Heinrich
+  n=5: Index 23..30; X=Konrad, Y=Heinrich
+  n=6: Index 31..39; X=Konrad, Y=Heinrich
+  n=7: Index 40..49; X=Ludwig, Y=Friedrich
+
+Permutationen: 1000000
+Zufallstreffer: 0
+Globaler p-Wert mit Plus-eins-Korrektur: 0.00000100
+Wilson-Intervall der Trefferquote (95 %): 0.00000000–0.00000384
+Signifikant:   ja (p < 0.05)
+
+Der p-Wert vergleicht die maximale Zahl aufeinanderfolgender n-Bloecke.
+Jede Permutation darf ihre eigene beste PAIR_ECHO-Kette waehlen.
+
+==============================================================================
+
+PAIR_ECHO-Analyse: 8er-Folge bis Karl VI.
+
+Regel:        X, Y, [n Namen], Y; n waechst je Block exakt um 1
+Discovery:    X/Y, Startposition und Start-n frei; Karlmann -> Karl
+Toleranz:     hoechstens 1 Position insgesamt ausserhalb der Bloecke
+Listenlaenge: 61
+Bloecke:      8
+Abgedeckt:    60/61 im Musterintervall (98.36%)
+Scan-Score:   59.016393
+
+Bloecke:
+  n=1: Index 0..3; X=Karl, Y=Ludwig
+  n=2: Index 4..8; X=Karl, Y=Ludwig
+  n=3: Index 9..14; X=Konrad, Y=Heinrich
+  n=4: Index 15..21; X=Konrad, Y=Heinrich
+  n=5: Index 23..30; X=Konrad, Y=Heinrich
+  n=6: Index 31..39; X=Konrad, Y=Heinrich
+  n=7: Index 40..49; X=Ludwig, Y=Friedrich
+  n=8: Index 50..60; X=Maximilian, Y=Karl
+
+Permutationen: 1000000
+Zufallstreffer: 0
+Globaler p-Wert mit Plus-eins-Korrektur: 0.00000100
+Wilson-Intervall der Trefferquote (95 %): 0.00000000–0.00000384
+Signifikant:   ja (p < 0.05)
+
+Der p-Wert vergleicht die maximale Zahl aufeinanderfolgender n-Bloecke.
+Jede Permutation darf ihre eigene beste PAIR_ECHO-Kette waehlen.
